@@ -42,7 +42,7 @@ class DeviceState(object):
         self.possible_events = None
         self.width = device.get_width(refresh=True)
         self.height = device.get_height(refresh=False)
-        self._save_important_view_ids()
+        # self._save_important_view_ids()
         
 
     @property
