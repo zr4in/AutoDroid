@@ -444,7 +444,8 @@ class UIEvent(InputEvent):
         view_text = view['text'].replace('\n', '\\n') if 'text' in view and view['text'] else ''
         view_text = view_text[:10] if len(view_text) > 10 else view_text
         view_short_sig = f'{state.activity_short_name}/{view_class}-{view_text}'
-        return f"state={state.state_str}, view={view['view_str']}({view_short_sig})"
+        safe_get = lambda d, k, default: d[k] if k in d else default
+        return f"state={state.state_str}, view={safe_get(view, "view_str", "default_str")}({view_short_sig})"
 
 
 class TouchEvent(UIEvent):
